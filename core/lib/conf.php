@@ -37,7 +37,7 @@ class conf
     }
 
     static public function all($file){
-        if(isset(selp::$conf[$file])){
+        if(isset(self::$conf[$file])){
             return self::$conf[$file];
         }else{
             $path=IMOOC.'/core/config/'.$file.'.php';

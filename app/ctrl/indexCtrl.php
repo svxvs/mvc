@@ -16,7 +16,13 @@ class indexCtrl extends \core\imooc
     }
     //test_for_mvc_add
     public function mvc_add(){
-        p($_POST);
+        $data=$_POST['add_test'];
+
+        $model=new \app\model\testModel();
+        $model->add_one(
+            array('a'=>$data)
+        );
+        $this->mvc_show();
     }
     //test_for_mvc_delete
     public function mvc_save(){
@@ -27,7 +33,10 @@ class indexCtrl extends \core\imooc
 
     }
     //test_for_mvc_select
-    public function mvc_select(){
-
+    public function mvc_show(){
+        $model=new \app\model\testModel();
+        $data=$model->get_all();
+        $this->assign('data',$data);
+        $this->display('show.html');
     }
 }

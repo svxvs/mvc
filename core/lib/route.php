@@ -11,6 +11,7 @@ class route
 {
     public $ctrl;
     public $action;
+    public $url;
     public function __construct()
     {
         /**
@@ -18,12 +19,17 @@ class route
          * 2.获取URL 参数部分
          * 3.返回对应控制器和方法
          */
-        $mvc_host=conf::get('MVC_HOST','mvc_host');
+//        $app_host=conf::get('APP_HOST','mvc_host');
+//        p($_SERVER);die;
+//        if(empty($mvc_host)){
+//            $app_host=$_SERVER['HTTP_HOST'];
+//        }else{
+//
+//        }
         if(
             isset($_SERVER['REQUEST_URI'])
             &&$_SERVER['REQUEST_URI']!='/'
         ){
-            p($_SERVER['REQUEST_URI']);die;
             //读取 请求的url ，分解
             $path=$_SERVER['REQUEST_URI'];
             $path=str_replace('/IMOOC/','',$path);

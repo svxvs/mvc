@@ -6,5 +6,5 @@
  * Time: 14:09
  */
 return array(
-    'MVC_HOST'=>'http://www.imooc.com/',
+    'APP_HOST'=>'http://www.imooc.com/',
 );
