@@ -12,10 +12,9 @@ class imooc
     public static $classMap=array();
     public $assign;
 
-
     static public function run()
     {
-        //test for drive-log
+
         \core\lib\log::init();
         \core\lib\log::log('test');
 
@@ -29,6 +28,8 @@ class imooc
             include $ctrlfile;
             $ctrl=new $ctrlClass();
             $ctrl->$action();
+
+            \core\lib\log::log('ctrl:'.$ctrlClass.'      action:'.$action);
         }else{
             throw new \Exception('找不到控制器'.$ctrlClass);
         }
@@ -54,10 +55,20 @@ class imooc
         $this->assign[$name]=$value;
     }
     public function display($file){
-        $file=APP.'/views/'.$file;
-        if (is_file($file)){
-            extract($this->assign);
-            include $file;
+        $path=APP.'/views/'.$file;
+        if (is_file($path)){
+            \Twig_Autoloader::register();
+            $loader = new \Twig_Loader_Filesystem(
+                APP.'/views'
+            );
+            $twig = new \Twig_Environment($loader, array(
+                'cache' => IMOOC.'/cache/twig_cache',
+                'debug'=>DEBUG
+            ));
+            $template = $twig->loadTemplate($file);
+            $template->display(
+                $this->assign?$this->assign:array()
+            );
         }
     }
 }

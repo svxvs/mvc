@@ -6,6 +6,7 @@
  * Time: 8:58
  */
 namespace core\lib;
+use core\lib\conf;
 class route
 {
     public $ctrl;
@@ -17,10 +18,12 @@ class route
          * 2.获取URL 参数部分
          * 3.返回对应控制器和方法
          */
+        $mvc_host=conf::get('MVC_HOST','mvc_host');
         if(
             isset($_SERVER['REQUEST_URI'])
             &&$_SERVER['REQUEST_URI']!='/'
         ){
+            p($_SERVER['REQUEST_URI']);die;
             //读取 请求的url ，分解
             $path=$_SERVER['REQUEST_URI'];
             $path=str_replace('/IMOOC/','',$path);
@@ -35,7 +38,7 @@ class route
                 $this->action=$patharr[1];
                 unset($patharr[1]);
             }else{
-                $this->action='index';
+                $this->action=conf::get('ACTION','route');
             }
             //获取url中的GET参数
             //例如：id/1/str/2/test/3
@@ -47,6 +50,9 @@ class route
                 }
                 $i=$i+2;
             }
+        }else{
+            $this->ctrl=conf::get('CTRL','route');
+            $this->action=conf::get('ACTION','route');
         }
     }
 }

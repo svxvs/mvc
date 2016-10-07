@@ -6,7 +6,6 @@
  * Time: 9:57
  */
 namespace core\lib;
-
 class conf
 {
     static public $conf=array();
@@ -17,6 +16,7 @@ class conf
          * 2.如果判断配置文件不存在，
          * 3.缓存配置
          */
+
         if(isset(self::$conf[$file])){
             return self::$conf[$file][$name];
         }else{

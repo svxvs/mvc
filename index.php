@@ -17,10 +17,19 @@ define('CORE',IMOOC.'/core');
 define('APP',IMOOC.'/app');
 define('MODULE','app');
 define('DEBUG',true);
-
+date_default_timezone_set('PRC');
 
 //1.1调试模式开关：是否启用PHP错误提示
+include "vendor/autoload.php";
 if(DEBUG){
+
+    $whoops = new \Whoops\Run;
+    $c_errorTitle='框架出错了';
+    $c_option=new \Whoops\Handler\PrettyPageHandler();
+    $c_option->setPageTitle($c_errorTitle);
+    $whoops->pushHandler($c_option);
+    $whoops->register();
+
     ini_set('display_errors','on');
     error_reporting(E_ALL);
 }else{

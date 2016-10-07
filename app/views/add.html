@@ -1,0 +1,7 @@
+{% extends "md_add.html" %}
+{% block content %}
+<form action="/index/mvc_add" method="post">
+    <input type="text" name="add_test" placeholder="在这里输入内容"><input type="submit" value="提交">
+</form>
+{{ titel }}
+{% endblock %}

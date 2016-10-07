@@ -6,24 +6,28 @@
  * Time: 9:13
  */
 namespace app\ctrl;
+use core\lib\model;
 
 class indexCtrl extends \core\imooc
 {
     public function index()
     {
-        $data='Hello World';
-        $title='视图文件';
+        $this->display('add.html');
+    }
+    //test_for_mvc_add
+    public function mvc_add(){
+        p($_POST);
+    }
+    //test_for_mvc_delete
+    public function mvc_save(){
 
-        //测试model
-        $model=new \core\lib\model();
-        $model->query('set names utf8');
+    }
+    //test_for_mvc_update
+    public function mvc_update(){
 
-//        $sql='select *from t1';
-//        $data=$model->query($sql)->fetchAll();
-//        p($data);
+    }
+    //test_for_mvc_select
+    public function mvc_select(){
 
-        $this->assign('titel',$title);
-        $this->assign('data',$data);
-        $this->display('index.html');
     }
 }

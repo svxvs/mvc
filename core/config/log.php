@@ -7,8 +7,7 @@
  */
 return array(
     'DRIVE'=>'file',
-
-    'option'=>array(
-        'path'=>IMOOC.'/log/'
+    'OPTION'=>array(
+        'PATH'=>IMOOC.'/log/'
     ),
 );
