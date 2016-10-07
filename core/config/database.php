@@ -10,6 +10,6 @@ return array(
     'database_name'=>'test',
     'server'=>'localhost',
     'username'=>'root',
-    'password'=>'',
+    'password'=>'root',
     'charset'=>'utf8',
 );
